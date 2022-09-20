@@ -1,0 +1,1 @@
+sipp -sf uas-reinvite-late-offer.xml -p 5090 -t un -max_socket 1024 -trace_err -error_file error_file.log -trace_logs -log_file logfile.log -trace_msg -message_file message_file.log -i 172.18.2.142 -s 361110000 172.18.2.142:5060
