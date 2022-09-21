@@ -71,7 +71,7 @@
 
     INVITE [next_url] SIP/2.0
     Via: SIP/2.0/[transport] [local_ip]:[local_port];rport;branch=[branch]
-    Route: <sip:172.18.2.142:5088;lr>
+    Route: <sip:[remote_ip]:[remote_port];lr>
     From: [$2];tag=[call_number]
     To: [$1]
     [last_Call-ID:]
@@ -105,7 +105,7 @@
   <![CDATA[
     ACK [next_url] SIP/2.0
     Via: SIP/2.0/[transport] [local_ip]:[local_port];rport;branch=[branch]
-    Route: <sip:172.18.2.142:5060;lr>
+    Route: <sip:[remote_ip]:[remote_port];lr>
     From: [$2];tag=[call_number]
     To: [$1]
     Contact: <sip:[local_ip]:[local_port]>
@@ -139,7 +139,7 @@
 
 <!--recv request="BYE" timeout="5000" ontimeout="2" next="3" /-->
 <label id ="5"/>
-<recv request="BYE" timeout="1890000" ontimeout="2" next="3" />
+<recv request="BYE" timeout="10000" ontimeout="2" next="3" />
 
 <!-- send BYE after timeout set avove (the audio file is 1890000 miliseconds long) -->
 <label id="2"/>
@@ -147,8 +147,7 @@
 <![CDATA[
       BYE [next_url] SIP/2.0
       [last_Via:]
-      [last_Record-Route:]
-      Route: <sip:172.18.2.142:5088;lr>
+      Route: <sip:[remote_ip]:[remote_port];lr>
       From: [$2];tag=[call_number]
       To: [$1]
       [last_Call-ID:]
@@ -175,7 +174,7 @@
       [last_Call-ID:]
       [last_CSeq:]
       Contact: <sip:[local_ip]:[local_port]>
-      Content-Length: 1
+      Content-Length: 0
 ]]>
 </send>
 
@@ -188,5 +187,4 @@
 <!-- definition of the call length repartition table (unit is ms) -->
 <CallLengthRepartition value="10, 50, 100, 500, 1000, 5000, 10000"/>
 </scenario>
-
 
